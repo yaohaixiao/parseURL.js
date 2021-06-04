@@ -41,7 +41,7 @@ parseURL('https://github.com/yaohaixiao/parseURL')
 ```
 
 ## 在线演示地址
-https://yaohaixiao.github.io/parseURL/
+https://yaohaixiao.github.io/parseURL.js/
 
 ## License
 Licensed under MIT License.
