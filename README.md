@@ -40,7 +40,7 @@ const parseURL = require('parse-url')
 parseURL('https://github.com/yaohaixiao/parseURL')
 ```
 ## Example
-
+https://yaohaixiao.github.io/parseURL/
 
 ## License
 Licensed under MIT License.
