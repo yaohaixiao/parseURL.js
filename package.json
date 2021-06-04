@@ -1,5 +1,5 @@
 {
-  "name": "parse-url",
+  "name": "parseurl.js",
   "version": "1.0.0",
   "description": "A JavaScript function parse URL string to an object: href, origin, username, password, hostname, port, host, pathname, search, path & hash.",
   "main": "parseURL.js",

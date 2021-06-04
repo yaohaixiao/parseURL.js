@@ -6,7 +6,7 @@ A JavaScript function parse URL string to an object: href, origin, username, pas
 ### npm install
 
 ```shell
-npm i -S parse-url
+npm i -S parseurl.js
 ```
 
 ### script
@@ -19,7 +19,7 @@ npm i -S parse-url
 
 ```js
 // require as a amd module
-const parseURL = require('parse-url')
+const parseURL = require('parseurl.js')
 
 /* OUTPUT:
  {
