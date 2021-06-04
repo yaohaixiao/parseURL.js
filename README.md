@@ -1,7 +1,7 @@
 # parseURL
 A JavaScript function parse URL string to an object: href, origin, username, password, hostname, port, host, pathname, search, path & hash.
 
-## install
+## Install
 
 ### npm install
 
@@ -15,7 +15,7 @@ npm i -S parse-url
 ```
 
 
-## usage
+## Usage
 
 ```js
 // require as a amd module
