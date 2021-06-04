@@ -1,4 +1,4 @@
-# parseURL
+# parseURL.js
 parseURL.js 提供一个 parseURL() 函数方法，可以很方便快速地解析出 URL 字符串中的各个信息，并将解析出的 URL 信息作为一个对象返回。返回的对象中包含的 URL 信息有：href、origin、username、password、hostname、port、host、pathname、search、path 和 hash。
 
 ## 安装
