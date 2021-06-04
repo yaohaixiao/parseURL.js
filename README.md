@@ -1,2 +1,2 @@
 # parseURL
-Parse URL in JavaScript: hostname, pathname, query, hash
+A function parse URL string to an object: href, origin, username, password, hostname, port, host, pathname, search, path & hash.
