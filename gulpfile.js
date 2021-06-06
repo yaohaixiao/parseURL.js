@@ -6,7 +6,15 @@ const sourcemaps = require('gulp-sourcemaps')
 const umd = require('gulp-umd')
 const uglify = require('gulp-uglify')
 
-const transpile = (cb) => {
+const copy = () => {
+  return gulp.src('./src/es6/*.js')
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failOnError())
+  .pipe(gulp.dest('dist/es6'))
+}
+
+const transpile = () => {
   return gulp.src('./src/parseURL.js')
   .pipe(eslint())
   .pipe(eslint.format())
@@ -33,4 +41,4 @@ const transpile = (cb) => {
   .pipe(gulp.dest('dist'))
 }
 
-exports.transpile = transpile
+exports.transpile = gulp.series(copy, transpile)

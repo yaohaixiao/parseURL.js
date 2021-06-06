@@ -25,56 +25,83 @@
  * 12. origin
  * ====================================================
  * @param {String} url - URL地址
+ * @param {String} [base] - 基准 URL 地址
  * @returns {Object}
  */
-var parseURLWithRegExp = function parseURLWithRegExp() {
-  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : location.href;
-  var pattern = /^(([^:/?#]+):)?\/\/(([^/?#]+):(.+)@)?([^/?#:]*)(:(\d+))?([^?#]*)(\\?([^#]*))?(#(.*))?/;
-  var matches = url.match(pattern);
-  var protocol = matches[2] || '';
-  var hostname = matches[6];
-  var port = matches[8] || '';
-  var pathname = matches[11] || '/';
-  var search = matches[10] || '';
-  var origin = (matches[1] ? matches[1] + '//' : '') + hostname;
-  return {
-    href: url,
-    origin: origin,
-    protocol: protocol,
-    username: matches[4] || '',
-    password: matches[5] || '',
-    hostname: hostname,
-    port: port,
-    host: hostname + port,
-    pathname: pathname,
-    search: search,
-    path: pathname + search,
-    hash: matches[13] || ''
-  };
-};
-
-var parseURLWithURLConstructor = function parseURLWithURLConstructor() {
-  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : location.href;
-  var results = new URL(url);
-  var protocol = results.protocol.replace(':', '');
-  return {
-    href: url,
-    origin: results.origin,
-    protocol: protocol,
-    username: results.username,
-    password: results.password,
-    hostname: results.hostname,
-    port: results.port,
-    host: results.host,
-    pathname: results.pathname,
-    search: results.search,
-    path: results.pathname + results.search,
-    hash: results.hash
-  };
-};
-
 var parseURL = function parseURL() {
   var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : location.href;
+  var base = arguments.length > 1 ? arguments[1] : undefined;
+
+  var getURLSearchParams = function getURLSearchParams(url) {
+    return (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(function (a, v) {
+      return a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1), a;
+    }, {});
+  };
+
+  var parseURLWithRegExp = function parseURLWithRegExp(url) {
+    var pattern = /^(([^:/?#]+):)?\/\/(([^/?#]+):(.+)@)?([^/?#:]*)(:(\d+))?([^?#]*)(\\?([^#]*))?(#(.*))?/,
+        matches = url.match(pattern),
+        hostname = matches[6],
+        port = matches[8] || '',
+        pathname = matches[11] || '/',
+        search = matches[10] || '',
+        searchParams = function () {
+      var params = getURLSearchParams(url);
+      return {
+        get: function get(name) {
+          return params[name] || '';
+        }
+      };
+    }();
+
+    return {
+      href: url,
+      origin: (matches[1] ? matches[1] + '//' : '') + hostname,
+      protocol: matches[2] || '',
+      username: matches[4] || '',
+      password: matches[5] || '',
+      hostname: hostname,
+      port: port,
+      host: hostname + port,
+      pathname: pathname,
+      search: search,
+      path: pathname + search,
+      hash: matches[13] || '',
+      searchParams: searchParams
+    };
+  };
+
+  var parseURLWithURLConstructor = function parseURLWithURLConstructor(url) {
+    var results = new URL(url);
+    var protocol = results.protocol.replace(':', '');
+    return {
+      href: url,
+      origin: results.origin,
+      protocol: protocol,
+      username: results.username,
+      password: results.password,
+      hostname: results.hostname,
+      port: results.port,
+      host: results.host,
+      pathname: results.pathname,
+      search: results.search,
+      path: results.pathname + results.search,
+      hash: results.hash,
+      searchParams: results.searchParams
+    };
+  };
+
+  if (base) {
+    if (/[/]$/.test(base)) {
+      base = base.replace(/[/]$/, '');
+    }
+
+    if (!/^[/]/.test(url)) {
+      url = '/' + url;
+    }
+
+    url = base + url;
+  }
 
   if (window.ActiveXObject) {
     return parseURLWithRegExp(url);
