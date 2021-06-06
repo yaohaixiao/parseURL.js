@@ -52,7 +52,6 @@ url.searchParams.get('id')
    "search": "",
    "path": "/yaohaixiao/parseURL",
    "hash": "",
-   // 是一个对象，有一个 get() 方法 
     "searchParams": {}
  }
 ```
