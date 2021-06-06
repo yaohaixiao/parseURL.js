@@ -14,12 +14,24 @@ npm i -S parseurl.js
 ```html
 <script src="path/to/parseURL.js"></script>
 ```
+## 语法
+
+```js
+parseURL(url[, base])
+```
+- url：是一个表示绝对或相对 URL 的 DOMString。如果url 是相对 URL，则会将 base 用作基准 URL。如果 url 是绝对URL，则无论参数base是否存在，都将被忽略；
+- base：可选，是一个表示基准 URL 的 DOMString，在 url 是相对 URL 时，它才会起效。如果未指定，则默认为 ”；
 
 ## 调用方法
 
 ```js
 const parseURL = require('parseurl.js')
+
+// 使用绝对路径
 parseURL('https://github.com/yaohaixiao/parseURL')
+
+// 使用基础路径
+parseURL('/yaohaixiao/parseURL', 'https://github.com')
 ```
 输出结果如下：
 
