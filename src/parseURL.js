@@ -47,14 +47,14 @@ const parseURL = (url = location.href, base) => {
       protocol: matches[2] || '',
       username: matches[4] || '',
       password: matches[5] || '',
-      hostname: hostname,
-      port: port,
+      hostname,
+      port,
       host: hostname + port,
-      pathname: pathname,
-      search: search,
+      pathname,
+      search,
       path: pathname + search,
       hash: matches[13] || '',
-      searchParams: searchParams
+      searchParams
     }
   }
 
@@ -65,7 +65,7 @@ const parseURL = (url = location.href, base) => {
     return {
       href: url,
       origin: results.origin,
-      protocol: protocol,
+      protocol,
       username: results.username,
       password: results.password,
       hostname: results.hostname,
@@ -79,15 +79,24 @@ const parseURL = (url = location.href, base) => {
     }
   }
 
+  // url 是为度路径时，忽略 base
+  if (/^(([^:/?#]+):)/.test(url)) {
+    base = ''
+  }
+
+  // 设置了基准 URL
   if (base) {
+    // 移除 base 最后的斜杠 ‘/’
     if (/[/]$/.test(base)) {
       base = base.replace(/[/]$/, '')
     }
 
+    // 确保 url 开始有斜杠
     if (!/^[/]/.test(url)) {
       url = '/' + url
     }
 
+    // 保证 URL 地址拼接后是一个正确的格式
     url = base + url
   }
 

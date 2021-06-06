@@ -25,7 +25,7 @@ const parseURLWithURLConstructor = (url= location.href, base) => {
   return {
     href: url,
     origin: results.origin,
-    protocol: protocol,
+    protocol,
     username: results.username,
     password: results.password,
     hostname: results.hostname,

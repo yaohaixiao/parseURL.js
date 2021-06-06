@@ -89,16 +89,25 @@ var parseURL = function parseURL() {
       hash: results.hash,
       searchParams: results.searchParams
     };
-  };
+  }; // url 是为度路径时，忽略 base
+
+
+  if (/^(([^:/?#]+):)/.test(url)) {
+    base = '';
+  } // 设置了基准 URL
+
 
   if (base) {
+    // 移除 base 最后的斜杠 ‘/’
     if (/[/]$/.test(base)) {
       base = base.replace(/[/]$/, '');
-    }
+    } // 确保 url 开始有斜杠
+
 
     if (!/^[/]/.test(url)) {
       url = '/' + url;
-    }
+    } // 保证 URL 地址拼接后是一个正确的格式
+
 
     url = base + url;
   }
