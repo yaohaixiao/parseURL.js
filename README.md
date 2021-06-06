@@ -32,6 +32,9 @@ parseURL('https://github.com/yaohaixiao/parseURL')
 
 // 使用基础路径
 parseURL('/yaohaixiao/parseURL', 'https://github.com')
+
+// 获取查询字符串中 id 的值，如果没有则返回空
+url.searchParams.get('id')
 ```
 输出结果如下：
 
@@ -48,7 +51,9 @@ parseURL('/yaohaixiao/parseURL', 'https://github.com')
    "pathname": "/yaohaixiao/parseURL",
    "search": "",
    "path": "/yaohaixiao/parseURL",
-   "hash": ""
+   "hash": "",
+   // 是一个对象，有一个 get() 方法 
+    "searchParams": {}
  }
 ```
 
