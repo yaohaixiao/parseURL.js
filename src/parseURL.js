@@ -74,7 +74,7 @@ const parseURL = (url = location.href, base) => {
       pathname: results.pathname,
       search: results.search,
       path: results.pathname + results.search,
-      hash: results.hash,
+      hash: results.hash.replace('#', ''),
       searchParams: results.searchParams
     }
   }
