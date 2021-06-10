@@ -75,6 +75,7 @@ var parseURL = function parseURL() {
     var results = new URL(url);
     var protocol = results.protocol.replace(':', '');
     return {
+      // link
       href: url,
       origin: results.origin,
       protocol: protocol,
@@ -86,7 +87,7 @@ var parseURL = function parseURL() {
       pathname: results.pathname,
       search: results.search,
       path: results.pathname + results.search,
-      hash: results.hash,
+      hash: results.hash.replace('#', ''),
       searchParams: results.searchParams
     };
   }; // url 是为度路径时，忽略 base

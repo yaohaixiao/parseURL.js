@@ -63,6 +63,7 @@ const parseURL = (url = location.href, base) => {
     const protocol = results.protocol.replace(':', '')
 
     return {
+      // link
       href: url,
       origin: results.origin,
       protocol,
