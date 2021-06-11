@@ -30,13 +30,25 @@
  */
 var parseURL = function parseURL() {
   var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : location.href;
-  var base = arguments.length > 1 ? arguments[1] : undefined;
+  var base = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var isEndWithSlash = /[/]$/;
+  /**
+   * 获取 URL 中的查询参数的键/值对象
+   * @param {String} url - 要分析的 URL 地址字符串
+   * @returns {Object} - 返回查询参数的键/值对象
+   */
 
   var getURLSearchParams = function getURLSearchParams(url) {
     return (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(function (a, v) {
       return a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1), a;
     }, {});
   };
+  /**
+   * 使用正则表达式分析 URL 地址
+   * @param {String} url - URL 地址的字符串
+   * @returns {Object}
+   */
+
 
   var parseURLWithRegExp = function parseURLWithRegExp(url) {
     var pattern = /^(([^:/?#]+):)?\/\/(([^/?#]+):(.+)@)?([^/?#:]*)(:(\d+))?([^?#]*)(\\?([^#]*))?(#(.*))?/,
@@ -70,12 +82,17 @@ var parseURL = function parseURL() {
       searchParams: searchParams
     };
   };
+  /**
+   * 使用 URL() 构造函数分析 URL 地址
+   * @param {String} url - URL 地址的字符串
+   * @returns {Object}
+   */
+
 
   var parseURLWithURLConstructor = function parseURLWithURLConstructor(url) {
-    var results = new URL(url);
-    var protocol = results.protocol.replace(':', '');
+    var results = new URL(url),
+        protocol = results.protocol.replace(':', '');
     return {
-      // link
       href: url,
       origin: results.origin,
       protocol: protocol,
@@ -90,18 +107,14 @@ var parseURL = function parseURL() {
       hash: results.hash.replace('#', ''),
       searchParams: results.searchParams
     };
-  }; // url 是为度路径时，忽略 base
+  }; // 设置了基准 URL, 并且 url 不是绝对路径时，
+  // 如果 URL 是绝对路径，则忽略 base
 
 
-  if (/^(([^:/?#]+):)/.test(url)) {
-    base = '';
-  } // 设置了基准 URL
-
-
-  if (base) {
+  if (!/^(([^:/?#]+):)/.test(url) && base) {
     // 移除 base 最后的斜杠 ‘/’
-    if (/[/]$/.test(base)) {
-      base = base.replace(/[/]$/, '');
+    if (isEndWithSlash.test(base)) {
+      base = base.replace(isEndWithSlash, '');
     } // 确保 url 开始有斜杠
 
 
@@ -111,11 +124,13 @@ var parseURL = function parseURL() {
 
 
     url = base + url;
-  }
+  } // IE browser
+
 
   if (window.ActiveXObject) {
     return parseURLWithRegExp(url);
   } else {
+    // Other browsers
     return parseURLWithURLConstructor(url);
   }
 };

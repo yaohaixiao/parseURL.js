@@ -17,13 +17,25 @@
  * @param {String} [base] - 基准 URL 地址
  * @returns {Object}
  */
-const parseURL = (url = location.href, base) => {
+const parseURL = (url = location.href, base = '') => {
+  const isEndWithSlash = /[/]$/
+
+  /**
+   * 获取 URL 中的查询参数的键/值对象
+   * @param {String} url - 要分析的 URL 地址字符串
+   * @returns {Object} - 返回查询参数的键/值对象
+   */
   const getURLSearchParams = (url) => {
     return (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce((a, v) => {
       return ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a)
     }, {})
   }
 
+  /**
+   * 使用正则表达式分析 URL 地址
+   * @param {String} url - URL 地址的字符串
+   * @returns {Object}
+   */
   const parseURLWithRegExp = (url) => {
     const pattern = /^(([^:/?#]+):)?\/\/(([^/?#]+):(.+)@)?([^/?#:]*)(:(\d+))?([^?#]*)(\\?([^#]*))?(#(.*))?/,
       matches = url.match(pattern),
@@ -58,12 +70,16 @@ const parseURL = (url = location.href, base) => {
     }
   }
 
+  /**
+   * 使用 URL() 构造函数分析 URL 地址
+   * @param {String} url - URL 地址的字符串
+   * @returns {Object}
+   */
   const parseURLWithURLConstructor = (url) => {
-    const results = new URL(url)
-    const protocol = results.protocol.replace(':', '')
+    const results = new URL(url),
+      protocol = results.protocol.replace(':', '')
 
     return {
-      // link
       href: url,
       origin: results.origin,
       protocol,
@@ -80,16 +96,12 @@ const parseURL = (url = location.href, base) => {
     }
   }
 
-  // url 是为度路径时，忽略 base
-  if (/^(([^:/?#]+):)/.test(url)) {
-    base = ''
-  }
-
-  // 设置了基准 URL
-  if (base) {
+  // 设置了基准 URL, 并且 url 不是绝对路径时，
+  // 如果 URL 是绝对路径，则忽略 base
+  if (!/^(([^:/?#]+):)/.test(url) && base) {
     // 移除 base 最后的斜杠 ‘/’
-    if (/[/]$/.test(base)) {
-      base = base.replace(/[/]$/, '')
+    if (isEndWithSlash.test(base)) {
+      base = base.replace(isEndWithSlash, '')
     }
 
     // 确保 url 开始有斜杠
@@ -101,9 +113,11 @@ const parseURL = (url = location.href, base) => {
     url = base + url
   }
 
+  // IE browser
   if (window.ActiveXObject) {
     return parseURLWithRegExp(url)
   } else {
+    // Other browsers
     return parseURLWithURLConstructor(url)
   }
 }

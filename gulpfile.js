@@ -3,6 +3,7 @@ const babel = require('gulp-babel')
 const clean = require('gulp-clean')
 const connect = require('gulp-connect')
 const eslint = require('gulp-eslint')
+const os = require('os');
 const open = require('gulp-open')
 const rename = require('gulp-rename')
 const sourcemaps = require('gulp-sourcemaps')
@@ -28,6 +29,15 @@ const copy = () => {
              .pipe(eslint.format())
              .pipe(eslint.failOnError())
              .pipe(gulp.dest('dist/es6'))
+}
+
+const openDocs = () => {
+  const browser = os.platform() === 'linux' ? 'google-chrome' : (os.platform() === 'darwin' ? 'google chrome' : (os.platform() === 'win32' ? 'chrome' : 'firefox'))
+  return gulp.src('docs/index.html')
+             .pipe(open({
+               app: browser,
+               uri: 'http://localhost:8090'
+             }))
 }
 
 const connectDocs = () => {
@@ -74,8 +84,9 @@ const transpile = () => {
 }
 
 const watchSourceCode = () => {
-  return watch('src/**/*.js')
-    .pipe(transpile())
+  return watch('src/**/*.js', {
+    ignoreInitial: false
+  }, gulp.series(lint, transpile, copy))
     .pipe(reload())
 }
 
@@ -86,9 +97,12 @@ const watchDocs = () => {
 
 const watchAll = gulp.parallel(watchSourceCode, watchDocs)
 
+const dev = gulp.parallel(lint, transpile, connectDocs, watchAll, openDocs)
+const build = gulp.series(cleanAll, lint, transpile, copy)
+
 exports.cleanDist = cleanDist
 exports.cleanDocs = cleanDocs
-exports.cleanAll = cleanAll
+exports.clean = cleanAll
 exports.copy = copy
 exports.lint = lint
 exports.transpile = transpile
@@ -97,5 +111,6 @@ exports.reload = reload
 exports.watchSourceCode = watchSourceCode
 exports.watchDocs = watchDocs
 exports.watch = watchAll
-exports.dev = gulp.parallel(lint, transpile, connectDocs, watchAll)
-exports.build = gulp.parallel(cleanAll, lint, transpile, copy)
+exports.start = dev
+exports.dev = dev
+exports.build = build

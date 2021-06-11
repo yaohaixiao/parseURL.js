@@ -4,7 +4,7 @@
   "description": "A JavaScript function parse URL string to an object: href, origin, username, password, hostname, port, host, pathname, search, path & hash.",
   "main": "parseURL.js",
   "scripts": {
-    "clean": "gulp cleanAll",
+    "clean": "gulp clean",
     "copy": "gulp copy",
     "connect": "gulp server",
     "watch": "gulp watch",
@@ -41,6 +41,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "gulp-umd": "^2.0.0",
-    "gulp-watch": "^5.0.1"
+    "gulp-watch": "^5.0.1",
+    "os": "^0.1.1"
   }
 }
