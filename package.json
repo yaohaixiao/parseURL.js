@@ -1,6 +1,6 @@
 {
   "name": "@yaohaixiao/parseurl.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "parseURL.js - 专门解析 URL 地址信息的 JavaScript 工具。",
   "main": "parseURL.min.js",
   "scripts": {

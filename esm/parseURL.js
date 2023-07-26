@@ -1,4 +1,3 @@
-import isConstructor from '../utils/isConstructor'
 import parseURLWithRegExp from './parseURLWithRegExp'
 import parseURLWithURLConstructor from './parseURLWithURLConstructor'
 
