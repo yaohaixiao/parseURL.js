@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/yaohaixiao/parseURL.js/compare/1.1.0...1.1.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* 移除多余无用的代码和单测代码； ([b413494](https://github.com/yaohaixiao/parseURL.js/commit/b413494f1e631c81fe77213983f29d7efd76f998))
+
+
+
 # 1.1.0 (2023-07-26)
 
 parseURL.js - 专门解析 URL 地址信息的 JavaScript 工具。
