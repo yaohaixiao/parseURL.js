@@ -1,4 +1,4 @@
-import parseURLWithURLConstructor from '../esm/parseURLWithURLConstructor'
+import parseURLWithURLConstructor from '@/parseURLWithURLConstructor'
 
 import {
   URL_ONE,
@@ -10,17 +10,13 @@ import {
 } from './utils/enum'
 
 describe('parseURLWithURLConstructor() 方法', () => {
-  it(`parseURLWithURLConstructor(${URL_ONE})，返回：${JSON.stringify(
-    DATA_ONE
-  )}`, () => {
+  it(`parseURLWithURLConstructor(${URL_ONE})`, () => {
     expect(JSON.stringify(parseURLWithURLConstructor(URL_ONE))).toEqual(
       JSON.stringify(DATA_ONE)
     )
   })
 
-  it(`parseURLWithURLConstructor('/yaohaixiao/parseurl.js', 'https://github.com')，返回：${JSON.stringify(
-    DATA_ONE
-  )}`, () => {
+  it(`parseURLWithURLConstructor('/yaohaixiao/parseurl.js', 'https://github.com')`, () => {
     expect(
       JSON.stringify(
         parseURLWithURLConstructor(
@@ -31,17 +27,13 @@ describe('parseURLWithURLConstructor() 方法', () => {
     ).toEqual(JSON.stringify(DATA_ONE))
   })
 
-  it(`parseURLWithURLConstructor('${URL_TWO}')，返回：${JSON.stringify(
-    DATA_TWO
-  )}`, () => {
+  it(`parseURLWithURLConstructor('${URL_TWO}')`, () => {
     expect(JSON.stringify(parseURLWithURLConstructor(URL_TWO))).toEqual(
       JSON.stringify(DATA_TWO)
     )
   })
 
-  it(`parseURLWithURLConstructor('${URL_THREE}')，返回：${JSON.stringify(
-    DATA_THREE
-  )}`, () => {
+  it(`parseURLWithURLConstructor('${URL_THREE}')`, () => {
     const url = parseURLWithURLConstructor(URL_THREE)
     expect(JSON.stringify(url)).toEqual(JSON.stringify(DATA_THREE))
     expect(url.searchParams.get('col')).toEqual('24')

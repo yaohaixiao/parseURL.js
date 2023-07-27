@@ -1,4 +1,4 @@
-import parseURL from '../esm/parseURL'
+import parseURL from '@/parseURL'
 
 import {
   URL_ONE,
@@ -12,34 +12,32 @@ import {
 } from './utils/enum'
 
 describe('parseURL() 方法', () => {
-  it(`parseURL('')，返回：null`, () => {
+  it(`parseURL('')`, () => {
     expect(parseURL('')).toEqual(null)
   })
 
-  it(`parseURL(${URL_ONE})，返回：${JSON.stringify(DATA_ONE)}`, () => {
+  it(`parseURL(${URL_ONE})`, () => {
     expect(JSON.stringify(parseURL(URL_ONE))).toEqual(JSON.stringify(DATA_ONE))
   })
 
-  it(`parseURL('/yaohaixiao/parseurl.js', 'https://github.com')，返回：${JSON.stringify(
-    DATA_ONE
-  )}`, () => {
+  it(`parseURL('/yaohaixiao/parseurl.js', 'https://github.com')}`, () => {
     expect(
       JSON.stringify(parseURL('/yaohaixiao/parseurl.js', 'https://github.com'))
     ).toEqual(JSON.stringify(DATA_ONE))
   })
 
-  it(`parseURL('${URL_TWO}')，返回：${JSON.stringify(DATA_TWO)}`, () => {
+  it(`parseURL('${URL_TWO}')`, () => {
     expect(JSON.stringify(parseURL(URL_TWO))).toEqual(JSON.stringify(DATA_TWO))
   })
 
-  it(`parseURL('${URL_THREE}')，返回：${JSON.stringify(DATA_THREE)}`, () => {
+  it(`parseURL('${URL_THREE}')`, () => {
     const url = parseURL(URL_THREE)
     expect(JSON.stringify(url)).toEqual(JSON.stringify(DATA_THREE))
     expect(url.searchParams.get('col')).toEqual('24')
     expect(url.searchParams.get('age')).toEqual(null)
   })
 
-  it(`parseURL('${URL_FOUR}')，返回：${JSON.stringify(DATA_FOUR)}`, () => {
+  it(`parseURL('${URL_FOUR}')`, () => {
     const url = parseURL(URL_FOUR)
     expect(JSON.stringify(url)).toEqual(JSON.stringify(DATA_FOUR))
     expect(url.searchParams.get('col')).toEqual('24')

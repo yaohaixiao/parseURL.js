@@ -1,4 +1,4 @@
-import parseURLWithRegExp from '../esm/parseURLWithRegExp'
+import parseURLWithRegExp from '@/parseURLWithRegExp'
 
 import {
   URL_ONE,
@@ -12,21 +12,17 @@ import {
 } from './utils/enum'
 
 describe('parseURLWithRegExp() 方法', () => {
-  it(`parseURLWithRegExp('')，返回：null`, () => {
+  it(`parseURLWithRegExp('')`, () => {
     expect(parseURLWithRegExp('')).toEqual(null)
   })
 
-  it(`parseURLWithRegExp(${URL_ONE})，返回：${JSON.stringify(
-    DATA_ONE
-  )}`, () => {
+  it(`parseURLWithRegExp(${URL_ONE})`, () => {
     expect(JSON.stringify(parseURLWithRegExp(URL_ONE))).toEqual(
       JSON.stringify(DATA_ONE)
     )
   })
 
-  it(`parseURLWithRegExp('yaohaixiao/parseurl.js', 'https://github.com')，返回：${JSON.stringify(
-    DATA_ONE
-  )}`, () => {
+  it(`parseURLWithRegExp('yaohaixiao/parseurl.js', 'https://github.com')}`, () => {
     expect(
       JSON.stringify(
         parseURLWithRegExp('yaohaixiao/parseurl.js', 'https://github.com')
@@ -34,26 +30,20 @@ describe('parseURLWithRegExp() 方法', () => {
     ).toEqual(JSON.stringify(DATA_ONE))
   })
 
-  it(`parseURLWithRegExp('${URL_TWO}')，返回：${JSON.stringify(
-    DATA_TWO
-  )}`, () => {
+  it(`parseURLWithRegExp('${URL_TWO}')`, () => {
     expect(JSON.stringify(parseURLWithRegExp(URL_TWO))).toEqual(
       JSON.stringify(DATA_TWO)
     )
   })
 
-  it(`parseURLWithRegExp('${URL_THREE}')，返回：${JSON.stringify(
-    DATA_THREE
-  )}`, () => {
+  it(`parseURLWithRegExp('${URL_THREE}')`, () => {
     const url = parseURLWithRegExp(URL_THREE)
     expect(JSON.stringify(url)).toEqual(JSON.stringify(DATA_THREE))
     expect(url.searchParams.get('col')).toEqual('24')
     expect(url.searchParams.get('age')).toEqual(null)
   })
 
-  it(`parseURLWithRegExp('${URL_FOUR}')，返回：${JSON.stringify(
-    DATA_FOUR
-  )}`, () => {
+  it(`parseURLWithRegExp('${URL_FOUR}')`, () => {
     const url = parseURLWithRegExp(URL_FOUR)
     expect(JSON.stringify(url)).toEqual(JSON.stringify(DATA_FOUR))
     expect(url.searchParams.get('col')).toEqual('24')

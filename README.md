@@ -9,9 +9,12 @@
 
 parseURL.js - 专门解析 URL 地址信息的 JavaScript 工具。
 
+
+
 ## 项目初衷
 
 编写 parseURL.js 主要是为初学 JavaScript 的朋友了解在 JavaScript 中[如何使用 JavaScript 解析 URL？](http://www.yaohaixiao.com/blog/how-to-parse-url-in-javascript/)而开发的。当然，parseURL.js 也完全可以胜任在实际产品开发的应用。
+
 
 
 ## Features
@@ -96,10 +99,7 @@ url.searchParams.get('id') // -> '23'
 
 ```js
 // 作为 ES6 模块使用
-import parseURL from '@yaohaixiao/parseurl.js/esm/parseURL'
-// parseURL() 方法的核心实现，分别采用正则表达式和 URL 构造函数解析
-import parseURLWithRegExp from '@yaohaixiao/parseurl.js/esm/parseURLWithRegExp'
-import parseURLWithURLConstructor from '@yaohaixiao/parseurl.js/esm/parseURLWithURLConstructor'
+import parseURL from '@yaohaixiao/parseurl.js/parseURL'
 
 // 使用基础路径
 const url = parseURL('/yaohaixiao/parseurl.js?age=24', 'https://github.com')

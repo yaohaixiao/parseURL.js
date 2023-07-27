@@ -1,4 +1,4 @@
-import getSearchParams from '../../esm/getSearchParams'
+import getSearchParams from '../../getSearchParams'
 
 export const URL_ONE = 'https://github.com/yaohaixiao/parseurl.js'
 export const URL_TWO = 'https://github.com/yaohaixiao/parseurl.js?col=24&row=23'
