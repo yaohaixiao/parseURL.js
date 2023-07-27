@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/yaohaixiao/parseURL.js/compare/1.1.1...1.2.0) (2023-07-27)
+
+
+### Features
+
+* 调整代码结构和对应的 README.md 说明信息 ([b53c023](https://github.com/yaohaixiao/parseURL.js/commit/b53c023a76b49c3865107110f138b9ff448fe852))
+
+
+
 ## [1.1.1](https://github.com/yaohaixiao/parseURL.js/compare/1.1.0...1.1.1) (2023-07-26)
 
 
