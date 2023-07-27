@@ -1,10 +1,10 @@
 # parseURL.js
 
 [![npm version](https://img.shields.io/npm/v/@yaohaixiao/parseurl.js)](https://www.npmjs.com/package/@yaohaixiao/parseurl.js)
-[![Github file size](https://img.shields.io/github/size/yaohaixiao/parseURL.js/parseURL.min.js.svg)](https://github.com/yaohaixiao/parseURL.js/blob/master/parseURL.min.js)
+![Gzip size](http://img.badgesize.io/https://cdn.jsdelivr.net/gh/yaohaixiao/parseURL.js/parseURL.min.js?compression=gzip&label=gzip%20size)
 [![prettier code style](https://img.shields.io/badge/code_style-prettier-07b759.svg)](https://prettier.io)
 [![Coverage](https://codecov.io/gh/yaohaixiao/parseURL.js/branch/main/graph/badge.svg)](https://codecov.io/gh/yaohaixiao/parseURL.js)
-[![npm downloads](https://img.shields.io/npm/dm/@yaohaixiao/parseurl.js)](https://npmcharts.com/compare/@yaohaixiao/parseurl.js?minimal=true)
+[![npm downloads](https://img.shields.io/npm/dt/@yaohaixiao/parseurl.js)](https://npmcharts.com/compare/@yaohaixiao/parseurl.js?minimal=true)
 [![MIT License](https://img.shields.io/github/license/yaohaixiao/parseurl.js.svg)](https://github.com/yaohaixiao/delegate.js/blob/master/LICENSE)
 
 parseURL.js - 专门解析 URL 地址信息的 JavaScript 工具。

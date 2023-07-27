@@ -4,7 +4,7 @@
 ### Bug Fixes
 
 * 移除多余无用的代码和单测代码； ([b413494](https://github.com/yaohaixiao/parseURL.js/commit/b413494f1e631c81fe77213983f29d7efd76f998))
-
+* 修复采用 URL() 函数的判断方法，改成采用功能探测方式；
 
 
 # 1.1.0 (2023-07-26)
