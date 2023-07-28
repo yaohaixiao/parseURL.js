@@ -18,9 +18,9 @@ export const DATA_ONE = {
   host: 'github.com',
   pathname: '/yaohaixiao/parseurl.js',
   search: '',
+  searchParams: getSearchParams(URL_ONE),
   path: '/yaohaixiao/parseurl.js',
-  hash: '',
-  searchParams: getSearchParams(URL_ONE)
+  hash: ''
 }
 
 export const DATA_TWO = {
@@ -34,9 +34,9 @@ export const DATA_TWO = {
   host: 'github.com',
   pathname: '/yaohaixiao/parseurl.js',
   search: '?col=24&row=23',
+  searchParams: getSearchParams(URL_TWO),
   path: '/yaohaixiao/parseurl.js?col=24&row=23',
-  hash: '',
-  searchParams: getSearchParams(URL_TWO)
+  hash: ''
 }
 
 export const DATA_THREE = {
@@ -50,9 +50,9 @@ export const DATA_THREE = {
   host: 'github.com:8080',
   pathname: '/yaohaixiao/parseurl.js',
   search: '?col=24&row=23',
+  searchParams: getSearchParams(URL_THREE),
   path: '/yaohaixiao/parseurl.js?col=24&row=23',
-  hash: '#top',
-  searchParams: getSearchParams(URL_THREE)
+  hash: '#top'
 }
 
 export const DATA_FOUR = {
@@ -66,7 +66,7 @@ export const DATA_FOUR = {
   host: 'github.com:8080',
   pathname: '/yaohaixiao/parseurl.js',
   search: '?col=24&row=23',
+  searchParams: getSearchParams(URL_FOUR),
   path: '/yaohaixiao/parseurl.js?col=24&row=23',
-  hash: '#top',
-  searchParams: getSearchParams(URL_FOUR)
+  hash: '#top'
 }

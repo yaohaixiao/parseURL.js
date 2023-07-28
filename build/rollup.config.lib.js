@@ -13,7 +13,7 @@ const PLUGIN_CONFIG = [
 export default [
   // For full functions module
   {
-    input: './esm/parseURL.js',
+    input: './parseURL.js',
     output: {
       name: 'parseURL',
       file: './parseURL.min.js',

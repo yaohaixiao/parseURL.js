@@ -4,25 +4,25 @@ import _getURLPattern from './_getURLPattern'
 /**
  * 分析 url 地址，将解析的结果作为对象返回，返回属性有：
  * 1. href - 完整 URL 地址
- * 2. protocol - 协议
- * 3. username - 用户名
- * 4. password - 密码
- * 5. host - 域名地址
- * 6. hostname - 域名名称
- * 7. port - 端口号
- * 8. path - 路径
- * 9. pathname - 路径名
- * 10. search - 查询参数
- * 11. hash - 哈希值
- * 12. origin
- * 13. searchParams
+ * 2. origin - 原始输入
+ * 3. protocol - 协议
+ * 4. username - 用户名
+ * 5. password - 密码
+ * 6. host - 域名地址
+ * 7. hostname - 域名名称
+ * 8. port - 端口号
+ * 9. path - 路径
+ * 10. pathname - 路径名
+ * 11. search - 查询参数
+ * 12. searchParams
+ * 13. hash - 哈希值
  * ====================================================
+ * @method parseURLWithRegExp
  * @param {String} url - URL地址
  * @param {String} [base] - 基准 URL 地址
  * @returns {Object|Null}
  */
 const parseURLWithRegExp = (url, base = undefined) => {
-  // /^(([^:/?#]+):)?\/\/(([^/?#]+):(.+)@)?([^/?#:]*)(:(\d+))?([^?#]*)(\\?([^#]*))?(#(.*))?/
   const pattern = _getURLPattern()
   const slashAtTheEnd = /\/$/
   let matches
@@ -82,9 +82,9 @@ const parseURLWithRegExp = (url, base = undefined) => {
     host,
     pathname,
     search,
+    searchParams: getSearchParams(search),
     path,
-    hash,
-    searchParams: getSearchParams(search)
+    hash
   }
 }
 

@@ -24,18 +24,18 @@ parseURL.js - 专门解析 URL 地址信息的 JavaScript 工具。
 - 支持 UMD 模块规范，同时也提供 ES6 模块调用；
 - 解析的 URL 地址信息非常全面：
   1. href - 完整 URL 地址
-  2. protocol - 协议
-  3. username - 用户名
-  4. password - 密码
-  5. host - 域名地址
-  6. hostname - 域名名称
-  7. port - 端口号
-  8. path - 路径
-  9. pathname - 路径名
-  10. search - 查询参数
-  11. hash - 哈希值
-  12. origin
-  13. searchParams
+  2. origin - 原始输入
+  3. protocol - 协议
+  4. username - 用户名
+  5. password - 密码
+  6. host - 域名地址
+  7. hostname - 域名名称
+  8. port - 端口号
+  9. path - 路径
+  10. pathname - 路径名
+  11. search - 查询参数
+  12. searchParams
+  13. hash - 哈希值
 - 文件体积小(GZip：1KB)，加载速度快；
 
 
@@ -154,13 +154,13 @@ const url = parseURL('https://yaohaixiao:parseUrl.js@github.com:8080/yaohaixiao/
 //   host: "github.com:8080",
 //   pathname: "/yaohaixiao/parseurl.js",
 //   search: "?col=24&row=23",
-//   path: "/yaohaixiao/parseurl.js?col=24&row=23",
-//   hash: "#top",
 //   searchParams: {
 //     get(prop) {
 //      // ... 获取 search 数据的方法
 //     }
-//   }
+//   },
+//   path: "/yaohaixiao/parseurl.js?col=24&row=23",
+//   hash: "#top"
 //  }
 ```
 
