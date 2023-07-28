@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/yaohaixiao/parseURL.js/compare/1.2.0...1.2.1) (2023-07-28)
+
+
+### Bug Fixes
+
+* 修复调整代码结构后，build 配置路径错误问题 ([a0451c6](https://github.com/yaohaixiao/parseURL.js/commit/a0451c6b542bcc001130b95cce0a4f9145bd4ad7))
+
+
+
 # [1.2.0](https://github.com/yaohaixiao/parseURL.js/compare/1.1.1...1.2.0) (2023-07-27)
 
 
