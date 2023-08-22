@@ -13,7 +13,7 @@ parseURL.js - 专门解析 URL 地址信息的 JavaScript 工具。
 
 ## 项目初衷
 
-编写 parseURL.js 主要是为初学 JavaScript 的朋友了解在 JavaScript 中[如何使用 JavaScript 解析 URL？](http://www.yaohaixiao.com/blog/how-to-parse-url-in-javascript/)而开发的。当然，parseURL.js 也完全可以胜任在实际产品开发的应用。
+编写 parseURL.js 主要是为初学 JavaScript 的朋友了解在 JavaScript 中 [如何使用 JavaScript 解析 URL？](http://www.yaohaixiao.com/blog/how-to-parse-url-in-javascript/)而开发的。当然，parseURL.js 也完全可以胜任在实际产品开发的应用。
 
 
 
